@@ -1,17 +1,13 @@
 # Problem: Movie tickets are priced based on age: $12 for adults (18 and over), $8 for children. Everyone gets a $2 discount on Wednesday.
 
 age = int(input("Enter Age: "))
-day = str(input("Enter Day: ").strip().lower())
+day = input("Enter Day: ").strip().lower()
 
-if age >= 10:
-    price = 12
-else:
-    price = 8
+# Base price based on age
+price = 12 if age >= 18 else 8
 
-if day == "wednesday" or day == "wed":
+# Apply $2 discount if it's Wednesday
+if day in ["wednesday", "wed"]:
     price -= 2
 
-
-print(f"Your Ticket Price is {price}")
-
-
+print(f"Your Ticket Price is ${price}")
