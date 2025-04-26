@@ -3,5 +3,5 @@
 
 while True:
     num = int(input("Enter a number: "))
-    if num > 0 and num <= 10:
+    if 1 <= num <= 10:
         break
