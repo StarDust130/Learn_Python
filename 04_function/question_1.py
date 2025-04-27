@@ -6,3 +6,5 @@ def square_root(num):
 
 result = square_root(2)
 print(result)  
+
+
