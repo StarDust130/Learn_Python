@@ -3,8 +3,10 @@ class Car:
         self.brand = brand
         self.model = model
 
-        
-my_car = Car("Mahindra", "BE 09")
+    def __str__(self):  # magic method to print nicely
+        return f"{self.brand} {self.model}"
 
-print(my_car.brand)
-print(my_car.model)
+
+my_car = Car("Mahindra", "BE 09")
+print(my_car)  # Now prints: Mahindra BE 09
+
