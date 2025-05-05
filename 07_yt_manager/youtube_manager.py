@@ -72,7 +72,7 @@ def main ():
         print("4. Delete a youtube video ")
         print("5. Exit the app ")
         choice = str(input("Enter your choice: "))
-        print(f"Videos 📹 {videos}")
+        # print(f"Videos 📹 {videos}")
 
 
         match choice:

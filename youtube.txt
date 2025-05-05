@@ -1,1 +1,0 @@
-[{"name": "Learn Code", "time": "200 hours"}, {"name": "Learn DevOps", "time": "60 hours"}]
