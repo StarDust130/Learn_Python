@@ -1,28 +1,27 @@
 import requests
 
+
 def fetch_jokes():
     url = 'https://api.freeapi.app/api/v1/public/randomjokes/joke/random'
 
-    responses = requests.get(url)
-    data = responses.json()
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
 
-    if data["success"] and data.get("data"):
-        joke_data = data["data"]
+        if data["success"] and data.get("data"):
+            joke_data = data["data"]
+            return joke_data.get("content", "No joke found!")
+        else:
+            return "Failed to fetch joke! 😆"
 
-        joke = joke_data["content"]
-
-        return joke
-    else:
-        ("Fail to fetch Jokes! 😆")
-
+    except Exception as e:
+        return f"Error fetching joke: {str(e)}"
 
 
 def main():
-    try:
-        joke = fetch_jokes()
-        print(f"{joke} 😂")
-    except Exception as e:
-        print(str(e))
+    joke = fetch_jokes()
+    print(f"{joke} 😂")
 
 
 if __name__ == "__main__":
