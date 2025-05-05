@@ -1,1 +1,1 @@
-[{"name": "Chai code", "time": "30 min"}, {"name": "babuBindas", "time": "5:00"}]
+[{"name": "WoWoW", "time": "moc400"}, {"name": "Chai aur code", "time": "50 min"}]
