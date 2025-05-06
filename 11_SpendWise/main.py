@@ -29,9 +29,7 @@ def main():
                 if is_login == True:
                     show_Dashboard()
             case "2":
-                is_login = create_account()  # login logic
-                if is_login == True:
-                    show_Dashboard()
+                create_account()
             case "3":
                 print("Bye 🤭! Have a Nice Day.")
                 break

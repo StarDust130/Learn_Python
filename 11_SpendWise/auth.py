@@ -33,6 +33,6 @@ def create_account():
 
     user_info.insert_one({"email": email, "password": password})
 
-    print("\n✅ Account created successfully! Welcome aboard 🚀\n")
+    print("\n✅ Account created successfully! Login Please 🚀\n")
 
     return True
