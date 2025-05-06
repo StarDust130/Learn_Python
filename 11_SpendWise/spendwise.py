@@ -8,7 +8,7 @@ from pymongo import MongoClient
 import time
 
 client = MongoClient(
-    "Mongo_URL")
+    "Mongo_DB_URL")
 
 db = client["spendwise"]
 
@@ -61,7 +61,7 @@ def show_Dashboard():
 
 def main():
     is_login = False
-    while True:
+    while not is_login:
         print("=" * 30)
         print("💸 Welcome to SpendWise 💸")
         print("=" * 30)
