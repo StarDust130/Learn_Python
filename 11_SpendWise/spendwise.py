@@ -16,6 +16,8 @@ user_info = db["user"]
 money_info = db["money"]
 
 
+
+
 def login():
     print("\n" + "-" * 10)
     print("💻  Login to SpendWise Terminal  💻")
@@ -25,11 +27,15 @@ def login():
     password = input("🕵️ Password: ")
 
     user = user_info.find_one({"email": email, "password": password})
+    
 
     if user:
         print("\n✅ Access Granted! Welcome back, Commander 🧠\n")
+        return True
+        
     else:
         print("\n❌ Access Denied! Invalid credentials ⚠️\n")
+        return False
 
 
 
@@ -45,9 +51,16 @@ def create_account():
 
     print("\n✅ Account created successfully! Welcome aboard 🚀\n")
 
+    return True
+
+
+def show_Dashboard():
+    print("Dashboard")
+
 
 
 def main():
+    is_login = False
     while True:
         print("=" * 30)
         print("💸 Welcome to SpendWise 💸")
@@ -61,9 +74,13 @@ def main():
 
         match choice:
             case "1":
-                login()  # login logic
+                is_login  = login()  # login logic
+                if is_login == True:
+                    show_Dashboard()
             case "2":
-                create_account()  # create account logic
+                is_login = create_account()  # login logic
+                if is_login == True:
+                    show_Dashboard()
             case "3":
                 print("Bye 🤭! Have a Nice Day.")
                 break
