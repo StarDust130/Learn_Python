@@ -4,7 +4,24 @@ SpendWise helps you 💰 track your income, 🧾 record expenses, 🎯 set budge
 
 Stay in control of your cash, spend wisely. 😉
 """
+from pymongo import MongoClient
 import time
+
+client = MongoClient(
+    "Mongo_URL")
+
+db = client["spendwise"]
+
+user_info = db["user"]
+money_info = db["money"]
+
+
+
+def login():
+    pass
+
+def create_account():
+    pass
 
 def main():
     while True:
@@ -20,9 +37,9 @@ def main():
 
         match choice:
             case "1":
-                pass  # login logic
+                login()  # login logic
             case "2":
-                pass  # create account logic
+                create_account()  # create account logic
             case "3":
                 print("Bye 🤭! Have a Nice Day.")
                 break
