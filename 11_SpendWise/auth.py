@@ -1,5 +1,6 @@
 
 from db import user_info
+import time
 
 
 def login():
@@ -14,6 +15,7 @@ def login():
 
     if user:
         print("\n✅ Access Granted! Welcome back, Commander 🧠\n")
+        time.sleep(2)
         return True
 
     else:
