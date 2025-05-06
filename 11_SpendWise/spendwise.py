@@ -16,12 +16,36 @@ user_info = db["user"]
 money_info = db["money"]
 
 
-
 def login():
-    pass
+    print("\n" + "-" * 10)
+    print("💻  Login to SpendWise Terminal  💻")
+    print("🔓" * 10 + "\n")
+
+    email = input("🧑‍💼 Email ID: ")
+    password = input("🕵️ Password: ")
+
+    user = user_info.find_one({"email": email, "password": password})
+
+    if user:
+        print("\n✅ Access Granted! Welcome back, Commander 🧠\n")
+    else:
+        print("\n❌ Access Denied! Invalid credentials ⚠️\n")
+
+
 
 def create_account():
-    pass
+    print("\n" + "🎉" * 10)
+    print("✨ Create Your Account ✨")
+    print("🎉" * 10 + "\n")
+
+    email = input("📧 Enter Email: ")
+    password = input("🔐 Enter Password: ")
+
+    user_info.insert_one({"email": email, "password": password})
+
+    print("\n✅ Account created successfully! Welcome aboard 🚀\n")
+
+
 
 def main():
     while True:
@@ -47,10 +71,6 @@ def main():
                 print("\n" * 1)
                 print("Invalid Input! 💢😠💢. Try Again")
                 time.sleep(2)
-                
-                
-
-
 
 
 if __name__ == "__main__":
