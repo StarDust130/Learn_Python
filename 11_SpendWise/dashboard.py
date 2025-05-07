@@ -1,8 +1,8 @@
 
-from money_info import add_income, add_expense, view_balance, set_monthly_budget, view_financial_report
+from money_info import add_income, add_expense, view_balance, view_financial_report
 
 
-def show_Dashboard():
+def show_Dashboard(email, date):
     while True:
         print("\n" + "═" * 45)
         print("💼  Welcome to Your SpendWise Dashboard  💼")
@@ -19,16 +19,14 @@ def show_Dashboard():
 
         match choice:
             case "1":
-                add_income()
+                add_income(email, date)
             case "2":
-                add_expense()
+                add_expense(email, date)
             case "3":
-                view_balance()
+                view_balance(email, date)
             case "4":
-                set_monthly_budget()
+                view_financial_report(email, date)
             case "5":
-                view_financial_report()
-            case "6":
                 print("👋 Logging out... See you soon!")
                 break
             case _:
