@@ -118,8 +118,3 @@ def view_today_summary(email, date):
 
     
 
-
-def view_financial_report(email, date):
-    print("📈 Generating report...")
-
-   
