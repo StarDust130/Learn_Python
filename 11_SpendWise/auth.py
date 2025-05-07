@@ -1,8 +1,6 @@
 
 from db import user_info, money_info
 import time
-
-
 from datetime import datetime
 
 
@@ -34,11 +32,11 @@ def login():
 
         print("\n✅ Access Granted! Welcome back, Commander 🧠\n")
         time.sleep(2)
-        return True
+        return email, today
 
     else:
         print("\n❌ Access Denied! Invalid credentials ⚠️\n")
-        return False
+        return None , None
 
 def create_account():
     print("\n" + "🎉" * 10)
