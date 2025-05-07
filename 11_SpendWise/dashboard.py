@@ -1,4 +1,4 @@
-from db import  money_info 
+
 from money_info import add_income, add_expense, view_balance, set_monthly_budget, view_financial_report
 
 
@@ -11,12 +11,11 @@ def show_Dashboard():
         print("1️⃣  ➕ Add Income")
         print("2️⃣  ➖ Add Expense")
         print("3️⃣  💰 View Balance")
-        print("4️⃣  🎯 Set Monthly Budget")
-        print("5️⃣  📊 View Financial Report")
-        print("6️⃣  🚪 Logout")
+        print("4️⃣  📊 View Financial Report")
+        print("5️⃣  🚪 Logout")
         print("─" * 45)
 
-        choice = input("👉 Enter your choice (1-6): ")
+        choice = input("👉 Enter your choice (1-5): ")
 
         match choice:
             case "1":
