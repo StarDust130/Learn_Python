@@ -1,6 +1,7 @@
 from db import  money_info
 import time
 from datetime import datetime
+from helper import format_date
 
 
 def add_income(email, date):
@@ -88,7 +89,7 @@ def add_expense(email, date):
 
 def view_today_summary(email, date):
     print("\n" + "📊" * 10)
-    print(f"📅 Daily Summary for {date}")
+    print(f"📅 Daily Summary for {format_date(date)}")
     print("📊" * 10 + "\n")
 
     # Fetch today's document from the database
