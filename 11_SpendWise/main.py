@@ -25,9 +25,9 @@ def main():
 
         match choice:
             case "1":
-                is_login  = login()  # login logic
-                if is_login == True:
-                    show_Dashboard()
+                email, date = login()
+                if email:
+                    show_Dashboard(email, date)
             case "2":
                 create_account()
             case "3":

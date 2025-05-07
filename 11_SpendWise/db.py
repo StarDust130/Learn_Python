@@ -2,7 +2,7 @@
 from pymongo import MongoClient
 
 client = MongoClient(
-    "mongodb+srv://stardut:LNRHe9WYRPGe5TcE@cluster0.hfaghq6.mongodb.net/")
+    "Mongo_URL")
 
 db = client["spendwise"]
 
