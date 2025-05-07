@@ -1,5 +1,6 @@
 
-from money_info import add_income, add_expense, view_balance, view_financial_report
+from money_info import add_income, add_expense, view_today_summary, view_financial_report
+import time
 
 
 def show_Dashboard(email, date):
@@ -10,7 +11,7 @@ def show_Dashboard(email, date):
         print("🔧 Choose an action below:\n")
         print("1️⃣  ➕ Add Income")
         print("2️⃣  ➖ Add Expense")
-        print("3️⃣  💰 View Balance")
+        print("3️⃣  💰 View Today Summary")
         print("4️⃣  📊 View Financial Report")
         print("5️⃣  🚪 Logout")
         print("─" * 45)
@@ -23,9 +24,18 @@ def show_Dashboard(email, date):
             case "2":
                 add_expense(email, date)
             case "3":
-                view_balance(email, date)
+                view_today_summary(email, date)
+                time.sleep(4)  # Let the user read the summary for 4 seconds
+
+                # Wait for user to press any key
+                input("Press any key to return to the dashboard...")
             case "4":
                 view_financial_report(email, date)
+
+                time.sleep(4)  # Let the user read the summary for 4 seconds
+
+                # Wait for user to press any key
+                input("Press any key to return to the dashboard...")
             case "5":
                 print("👋 Logging out... See you soon!")
                 break
