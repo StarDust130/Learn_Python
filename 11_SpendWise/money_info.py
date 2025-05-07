@@ -1,5 +1,6 @@
 from db import  money_info
 import time
+from datetime import datetime
 
 
 def add_income(email, date):
@@ -20,15 +21,17 @@ def add_income(email, date):
         if not source:
             source = "❓ Unknown"
 
-        # Add income entry
+        # Add income entry in DB 🐼
         income_entry = {
             "amount": amount,
-            "source": source
+            "source": source,
+            "time": datetime.now().strftime("%H:%M:%S")
         }
 
         money_info.update_one(
             {"email": email, "date": date},
             {"$push": {"income": income_entry}}
+            
         )
 
         
@@ -44,19 +47,78 @@ def add_income(email, date):
         print(f"\n⚠️ Unexpected error: {e}\n")
 
 
-def add_expense():
-    print("💸 Adding income...")
+def add_expense(email, date):
+    print("\n" + "🧾" * 12)
+    print("💸  Add an Expense to Your Tracker")
+    print("🧾" * 12 + "\n")
+
+    try:
+        amount_input = input("💰 Amount Spent (₹): ")
+        amount = float(amount_input)
+
+        if amount <= 0:
+            print("\n🚫 Amount must be more than ₹0. Try again!\n")
+            return
+
+        category = input(
+            "📌 What did you spend on? (e.g., 🍔 Food, 🚕 Travel): ").strip()
+        if not category:
+            category = "❓ Unknown"
+
+        expense_entry = {
+            "amount": amount,
+            "source": category,
+            "time": datetime.now().strftime("%H:%M:%S")
+        }
+
+        money_info.update_one(
+            {"email": email, "date": date},
+            {"$push": {"expenses": expense_entry}}
+        )
+
+        print(f"\n✅ Logged ₹{amount:.2f} for '{category}' 🧾\n")
+        time.sleep(1.5)
+
+    except ValueError:
+        print("\n❌ Oops! That wasn't a valid number.\n")
+
+    except Exception as e:
+        print(f"\n⚠️ Error occurred: {e}\n")
 
 
-def view_balance():
-    print("🧮 Calculating your balance...")
+def view_today_summary(email, date):
+    print("\n" + "📊" * 10)
+    print(f"📅 Daily Summary for {date}")
+    print("📊" * 10 + "\n")
+
+    # Fetch today's document from the database
+    today_info = money_info.find_one({"email": email, "date": date})
+
+    if not today_info:
+        print("❗ No records found for today. Add some income or expenses first!\n")
+        return
+
+    # Calculate total income and expenses
+    total_income = sum(entry["amount"] for entry in today_info.get("income", []))
+    total_expenses = sum(entry["amount"] for entry in today_info.get("expenses", []))
+
+    # Show the summary
+    print(f"💰 Total Income: ₹{total_income:.2f}")
+    print(f"💸 Total Expenses: ₹{total_expenses:.2f}")
+    print(f"🧾 Net Balance: ₹{total_income - total_expenses:.2f}")
+
+    # Optional: Show the largest expense of the day
+    top_expenses = sorted(today_info.get("expenses", []), key=lambda x: x["amount"], reverse=True)
+    if top_expenses:
+        top_expense = top_expenses[0]
+        print(f"\n🔍 Top Expense: {top_expense['source']} - ₹{top_expense['amount']:.2f}")
+
+    print("\n" + "📊" * 10)
+
+    
 
 
-def set_monthly_budget():
-    print("📝 Setting your monthly budget...")
-
-
-def view_financial_report():
+def view_financial_report(email, date):
     print("📈 Generating report...")
 
    
